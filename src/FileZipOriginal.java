@@ -47,6 +47,7 @@ public class FileZipOriginal {
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));    
 
 		File srcFile = new File(fileToZip);
+		
 		if(excludeContainingFolder && srcFile.isDirectory()&& isServerLogs) {
 			//System.out.println("In the directory");
 			for(String fileName : srcFile.list()) {
@@ -59,9 +60,22 @@ public class FileZipOriginal {
 					}
 				}
 			}
-		} else {
-			addToZip("", fileToZip, zipOut);
 		}
+		
+		if(excludeContainingFolder && srcFile.isDirectory()&& !isServerLogs) {
+			//System.out.println("In the directory");
+			for(String fileName : srcFile.list()) {
+				for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
+					System.out.println("Loop to get file: "+ fileName);
+					/*Matches any filename that contains the date*/
+					boolean b = Pattern.matches(".*"+i+".*", fileName); //This needs to be changed to check for all the files inside Locations.docx
+					if(b){
+						addToZip("", fileToZip + "/" + fileName, zipOut);
+					}
+				}
+			}
+		}
+		
 
 		zipOut.flush();
 		zipOut.close();
