@@ -1,0 +1,99 @@
+2012-11-30 21:12:55,190 INFO  [main] wt.system.out - -------------------------------------------------------
+2012-11-30 21:12:55,193 INFO  [main] wt.server.manager.startup - Starting ServerManager
+2012-11-30 21:12:55,194 INFO  [main] wt.server.manager.startup - JVM id: 4284
+2012-11-30 21:12:55,194 INFO  [main] wt.server.manager.startup - JVM: Sun Microsystems Inc., Java HotSpot(TM) Server VM, 1.6.0_29 (20.4-b02), 32-bit
+2012-11-30 21:12:55,194 INFO  [main] wt.server.manager.startup - OS: Windows 7, x86, 6.1
+2012-11-30 21:12:55,196 INFO  [main] wt.server.manager.startup - Host: JCHARTRAIN0D (jchartrain0d.ptcnet.ptc.com)
+2012-11-30 21:12:55,197 INFO  [main] wt.server.manager.startup - Class path =
+  Z:\Windchill\codebase
+  Z:\Windchill\codebase\WEB-INF\lib\archiveClientWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\archiveServerWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\archiveWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\CounterPartWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\dpimplWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\dpinfraWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\Gantt.jar
+  Z:\Windchill\codebase\WEB-INF\lib\ie3rdpartylibs.jar
+  Z:\Windchill\codebase\WEB-INF\lib\ieWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\install.jar
+  Z:\Windchill\codebase\WEB-INF\lib\install_ja.jar
+  Z:\Windchill\codebase\WEB-INF\lib\jmxcoreWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\jviews-chart-all.jar
+  Z:\Windchill\codebase\WEB-INF\lib\jviews-framework-all.jar
+  Z:\Windchill\codebase\WEB-INF\lib\jviews-gantt-all.jar
+  Z:\Windchill\codebase\WEB-INF\lib\mylyn-integration.jar
+  Z:\Windchill\codebase\WEB-INF\lib\pdmlWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\prowtWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\reqlWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\rfaWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\rialtoWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\RMWebServices.jar
+  Z:\Windchill\codebase\WEB-INF\lib\wc3rdpartylibs.jar
+  Z:\Windchill\codebase\WEB-INF\lib\wnc-testWeb.jar
+  Z:\Windchill\codebase\WEB-INF\lib\wncWeb.jar
+  Z:\Windchill\lib\apache-solr-solrj-1.4.1.jar
+  Z:\Windchill\lib\dpimpl-test.jar
+  Z:\Windchill\lib\dpinfra-test.jar
+  Z:\Windchill\lib\easymock.jar
+  Z:\Windchill\lib\GroboTestingJUnit-1.2.1-core.jar
+  Z:\Windchill\lib\groovy-all.jar
+  Z:\Windchill\lib\hsqldb.jar
+  Z:\Windchill\lib\ie-test.jar
+  Z:\Windchill\lib\jmockit.jar
+  Z:\Windchill\lib\jmxcore-test.jar
+  Z:\Windchill\lib\junit.jar
+  Z:\Windchill\lib\objenesis.jar
+  Z:\Windchill\lib\org.springframework.test.jar
+  Z:\Windchill\lib\pdml-test.jar
+  Z:\Windchill\lib\pdml.jar
+  Z:\Windchill\lib\reql-test.jar
+  Z:\Windchill\lib\reql.jar
+  Z:\Windchill\lib\rialto-test.jar
+  Z:\Windchill\lib\servlet.jar
+  Z:\Windchill\lib\test-test.jar
+  Z:\Windchill\lib\tool-test.jar
+  Z:\Windchill\lib\wnc-test.jar
+  Z:\Windchill\lib\wnc.jar
+  D:\Java\jdk1.6.0_29\lib\tools.jar
+  Z:\Windchill\tomcat\bin\bootstrap.jar
+  Z:\Windchill\tomcat\bin\tomcat-juli.jar
+  Z:\Windchill\srclib\wnc\WtAsmAgent.jar
+2012-11-30 21:12:55,214 INFO  [main] wt.server.manager.startup - Registry created: RegistryImpl[UnicastServerRef2 [liveRef: [endpoint:[jchartrain0d.ptcnet.ptc.com:5002](local),objID:[0:0:0, 0]]]]
+2012-11-30 21:12:55,283 INFO  [main] wt.server.manager.startup - ServerManager created.
+2012-11-30 21:12:55,283 INFO  [main] wt.server.manager.startup - ServerManager bound in registry.
+2012-11-30 21:12:55,284 INFO  [main] wt.server.manager.startup - Creating wt.manager.StandardServerMonitor
+2012-11-30 21:12:55,300 INFO  [main] wt.server.manager.startup - Creating wt.manager.jmx.Startup
+2012-11-30 21:12:55,300 INFO  [MethodServerMonitor] wt.server.manager.startup - Starting 1 MethodServer instance
+2012-11-30 21:12:55,304 INFO  [MethodServerMonitor] wt.manager.ServerLauncher - Starting MethodServer
+2012-11-30 21:12:55,588 INFO  [main] wt.cache.server - Master cache manager initialized.
+2012-11-30 21:12:56,493 INFO  [main] wt.server.manager.startup - ServerManager ready (in 2.769 secs).
+2012-11-30 21:12:56,493 WARN  [main] wt.server.manager.startup - 
+-------------------------------------------------------------------------------
+WINDCHILL CONFIGURATION ASSISTANT (WCA) HAS NOT BEEN USED!
+PERFORMANCE ISSUES MAY RESULT FROM FAILING TO USE WCA!
+FOR OPTIMAL PERFORMANCE, WCA SHOULD BE USED PRIOR TO PRODUCT USAGE.
+-------------------------------------------------------------------------------
+2012-11-30 21:12:56,498 INFO  [wt.jmx.core.SharedScheduledExecutor.worker] wt.serverManager.info - JVMName=4284@JCHARTRAIN0D, 
+StartTime=1354309973724, 
+MaxHeapBytes=134217728, 
+CacheMaster=true, 
+JVMArguments=[-javaagent:Z:\Windchill\srclib\wnc\WtAsmAgent.jar,
+-Xverify:none,
+-Djava.endorsed.dirs=Z:\Windchill\lib\endorsed,
+-Djava.awt.headless=true,
+-Dwt.manager.serviceName=ServerManager,
+-Dwt.logs.dir=Z:\Windchill\logs,
+-Dcom.sun.management.jmxremote,
+-Djmx.remote.protocol.provider.pkgs=wt.jmx.remote.protocol,
+-Duser.timezone=GMT,
+-Dlog4j.configuration=WEB-INF/log4jServerManager.properties,
+-Xms64m,
+-Xmx144m], 
+AvailableProcessors=8
+2012-11-30 21:12:56,498 WARN  [main] wt.server.manager.startup - 
+-------------------------------------------------------------------------------
+JMX-Administrators EMAIL LIST HAS NOT BEEN POPULATED!
+SYSTEM HEALTH NOTIFICATIONS WILL NOT BE SENT!
+-------------------------------------------------------------------------------
+2012-11-30 21:12:56,578 INFO  [wt.jmx.core.SharedScheduledExecutor.worker] wt.summary.general - JVMName=4284@JCHARTRAIN0D, HeapMemoryUsage=4833128, NonHeapMemoryUsage=15677096, Uptime=2854, ProcessCpuTime=3900025000, JITCTime=992, GarbageCollectors=[PS MarkSweep,PS Scavenge], GCTime=[136,18], GCCount=[3,6], Classes=2585, Threads=18, TotalStartedThreadCount=18, PermGenPercentCollUsage=22.37722873687744, PermGenPercentUsage=22.397077083587646, SystemLoadAverage=-1.0
+2012-11-30 21:13:07,971 INFO  [RMI TCP Connection(2)-10.199.40.173] wt.jmx.notif.servletEngine.start - Time=2012-11-30 21:13:07.968 +0000, Name=ServletEngineStartNotifier, SourceObjectName=com.ptc:wt.subsystem=Monitors,wt.monitorType=ServletEngines, class=class javax.management.Notification, type=wt.jmx.core.mbeans.JavaProcessMonitorMBean.process.added, userData=[jmxServiceURL=,name=13612@JCHARTRAIN0D,startDate=2012-11-30 15:26:12.922 +0000], message=Java process added: 13612@JCHARTRAIN0D, JVM Name=4284@JCHARTRAIN0D
