@@ -31,10 +31,10 @@ public class FileZipOriginal {
 		try 
 		{	
 			date = Integer.parseInt(args[0]);
-			//new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
-			new FileZipOriginal("Z:/Windchill/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
-			new FileZipOriginal("Z:/Windchill/codebase", "Z:/Windchill/logs/TechPack/PropertyFiles.zip", true, false);
-			new FileZipOriginal("Z:/Windchill/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true, false);
+			new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
+//			new FileZipOriginal("Z:/Windchill/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
+//			new FileZipOriginal("Z:/Windchill/codebase", "Z:/Windchill/logs/TechPack/PropertyFiles.zip", true, false);
+//			new FileZipOriginal("Z:/Windchill/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true, false);
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
 		{
