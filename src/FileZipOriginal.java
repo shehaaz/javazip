@@ -32,9 +32,9 @@ public class FileZipOriginal {
 		{	
 			date = Integer.parseInt(args[0]);
 			new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
-//			new FileZipOriginal("Z:/Windchill/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
-//			new FileZipOriginal("Z:/Windchill/codebase", "Z:/Windchill/logs/TechPack/PropertyFiles.zip", true, false);
-//			new FileZipOriginal("Z:/Windchill/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true, false);
+			//			new FileZipOriginal("Z:/Windchill/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
+			//			new FileZipOriginal("Z:/Windchill/codebase", "Z:/Windchill/logs/TechPack/PropertyFiles.zip", true, false);
+			//			new FileZipOriginal("Z:/Windchill/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true, false);
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
 		{
@@ -47,7 +47,7 @@ public class FileZipOriginal {
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));    
 
 		File srcFile = new File(fileToZip);
-		
+
 		if(excludeContainingFolder && srcFile.isDirectory()&& isServerLogs) {
 			//System.out.println("In the directory");
 			for(String fileName : srcFile.list()) {
@@ -61,21 +61,18 @@ public class FileZipOriginal {
 				}
 			}
 		}
-		
+
 		if(excludeContainingFolder && srcFile.isDirectory()&& !isServerLogs) {
-			//System.out.println("In the directory");
-			for(String fileName : srcFile.list()) {
-				for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
-					System.out.println("Loop to get file: "+ fileName);
-					/*Matches any filename that contains the date*/
-					boolean b = Pattern.matches(".*"+i+".*", fileName); //This needs to be changed to check for all the files inside Locations.docx
-					if(b){
-						addToZip("", fileToZip + "/" + fileName, zipOut);
-					}
+			for(String fileName : srcFile.list()) {	
+				System.out.println("Loop to get file: "+ fileName);
+				/* TODO: Loop through the files and get the files names*/
+				boolean b = Pattern.matches(i, fileName); 
+				if(b){
+					addToZip("", fileToZip + "/" + fileName, zipOut);
 				}
 			}
 		}
-		
+
 
 		zipOut.flush();
 		zipOut.close();
