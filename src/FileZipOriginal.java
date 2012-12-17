@@ -106,7 +106,6 @@ public class FileZipOriginal {
 
 		if(excludeContainingFolder && srcFile.isDirectory()) {
 			for(String fileName : srcFile.list()) {	
-//				System.out.println("Loop to get file: "+ fileName);
 
 				/*Reading text File*/
 				FileReader file = null;
