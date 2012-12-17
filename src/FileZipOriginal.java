@@ -42,7 +42,7 @@ public class FileZipOriginal {
 		{	
 			windchillFolder = args[0];
 			date = Integer.parseInt(args[1]);
-			
+
 			new FileZipOriginal(windchillFolder+"/logs", windchillFolder+"/logs/TechPack/ServerLogs.zip", true, true);
 			new FileZipOriginal(windchillFolder+"/codebase", windchillFolder+"/logs/TechPack/CodebaseFiles.zip", true,"codebaseFiles.txt");
 			new FileZipOriginal(windchillFolder+"/codebase/com/lcs/wc/client", windchillFolder+"/logs/TechPack/ClientFiles.zip", true,"clientFiles.txt");
@@ -52,7 +52,7 @@ public class FileZipOriginal {
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
 		{
-			System.out.println("Please specify a date in this format: yymmdd");
+			System.out.println("Please specify The Root of the Windchill folder e.g: \"Z:/Windchill\" and a date in this format: yymmdd");
 		}
 	}
 
@@ -71,7 +71,6 @@ public class FileZipOriginal {
 		File srcFile = new File(fileToZip);
 
 		if(excludeContainingFolder && srcFile.isDirectory()) {
-			//System.out.println("In the directory");
 			for(String fileName : srcFile.list()) {
 				for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
 					System.out.println("Loop to get file: "+ fileName);
@@ -111,15 +110,13 @@ public class FileZipOriginal {
 				FileReader file = null;
 				BufferedReader reader = null;
 				try {
-					file = new FileReader("src/parsable/"+fileList); //This only works for codebase files...need to find the name by fileToZip
+					file = new FileReader("src/parsable/"+fileList); 
 					reader = new BufferedReader(file);
 					String line = "";
-					while ((line = reader.readLine()) != null) { //Loop through the files and get the files names
-						boolean b = Pattern.matches(line, fileName);
+					while ((line = reader.readLine()) != null) { 
+						boolean b = Pattern.matches(line, fileName); /*Matches filename with names in text file*/
 						if(b){
-							System.out.println("File from textfile: "+ line);
-							System.out.println("File from source: "+ fileName);
-							addToZip("", fileToZip + "/" + fileName, zipOut); //Adding individual files to the addToZip
+							addToZip("", fileToZip + "/" + fileName, zipOut); 
 						}
 					}
 				} catch (FileNotFoundException e) {
@@ -160,7 +157,7 @@ public class FileZipOriginal {
 
 		if(excludeContainingFolder && srcFile.isDirectory()) {
 			for(String fileName : srcFile.list()) {
-						addToZip("", fileToZip + "/" + fileName, zipOut);	
+				addToZip("", fileToZip + "/" + fileName, zipOut);	
 			}
 		}
 		zipOut.flush();
