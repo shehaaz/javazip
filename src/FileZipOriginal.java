@@ -15,7 +15,9 @@ import java.util.zip.ZipOutputStream;
 /**
  * 
  * @author asaif
- *This command line class takes one argument, a date, in this format yymmdd. e.g: 121130 (November 30th, 2012) 
+ *This command line class takes two arguments
+ *1. The Root of the Windchill folder. e.g: "Z:/Windchill" (exactly as shown. NO forward slash (/) after "Windchill")
+ *2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012) 
  */
 
 public class FileZipOriginal {
@@ -26,6 +28,7 @@ public class FileZipOriginal {
 	private static SimpleDateFormat Date_format = new SimpleDateFormat("yyMMdd");
 	private static int currentDate = Integer.parseInt(Date_format.format(cal.getTime())); //current date in Int format
 	private static int date; //date inputed
+	private static String windchillFolder;
 
 
 	public static void main(String[] args) throws Exception {
@@ -33,11 +36,12 @@ public class FileZipOriginal {
 		System.out.println("Today's Date: " + currentDate);
 		try 
 		{	
-			date = Integer.parseInt(args[0]);
+			windchillFolder = args[0];
+			date = Integer.parseInt(args[1]);
 			//			new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
-			new FileZipOriginal("Z:/Windchill/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
-			new FileZipOriginal("Z:/Windchill/codebase", "Z:/Windchill/logs/TechPack/CodebaseFiles.zip", true);
-			new FileZipOriginal("Z:/Windchill/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true);
+			new FileZipOriginal(windchillFolder+"/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
+			new FileZipOriginal(windchillFolder+"/codebase", "Z:/Windchill/logs/TechPack/CodebaseFiles.zip", true);
+			new FileZipOriginal(windchillFolder+"/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true);
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
 		{
@@ -99,7 +103,7 @@ public class FileZipOriginal {
 				FileReader file = null;
 				BufferedReader reader = null;
 				try {
-					file = new FileReader("src/parsable/codebaseFiles.txt");
+					file = new FileReader("src/parsable/codebaseFiles.txt"); //This only works for codebase files...need to find the name by fileToZip
 					reader = new BufferedReader(file);
 					String line = "";
 					while ((line = reader.readLine()) != null) { //Loop through the files and get the files names
