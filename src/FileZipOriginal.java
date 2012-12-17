@@ -15,7 +15,7 @@ import java.util.zip.ZipOutputStream;
 /** 
  * This command line tool takes two arguments
  * 1. The Root of the Windchill folder. e.g: "Z:/Windchill" (exactly as shown. NO forward slash (/) after "Windchill")
- * 2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012) 
+ * 2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012). This would fetch everything from the November 30th, 2012 until today
  *  @author asaif
  * 
 
@@ -42,7 +42,7 @@ public class FileZipOriginal {
 		{	
 			windchillFolder = args[0];
 			date = Integer.parseInt(args[1]);
-
+			new File(windchillFolder+"/logs/TechPack").mkdir();
 			new FileZipOriginal(windchillFolder+"/logs", windchillFolder+"/logs/TechPack/ServerLogs.zip", true, true);
 			new FileZipOriginal(windchillFolder+"/codebase", windchillFolder+"/logs/TechPack/CodebaseFiles.zip", true,"codebaseFiles.txt");
 			new FileZipOriginal(windchillFolder+"/codebase/com/lcs/wc/client", windchillFolder+"/logs/TechPack/ClientFiles.zip", true,"clientFiles.txt");
@@ -65,27 +65,25 @@ public class FileZipOriginal {
 	 * @throws IOException
 	 */
 	public FileZipOriginal(String fileToZip, String zipFile, boolean excludeContainingFolder, boolean isServerLogs)
-			throws IOException {        
-		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));    
+			throws IOException {   
 
-		File srcFile = new File(fileToZip);
-
-		if(excludeContainingFolder && srcFile.isDirectory()) {
-			for(String fileName : srcFile.list()) {
-				for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
-					System.out.println("Loop to get file: "+ fileName);
-					/*Matches any filename that contains the date*/
-					boolean b = Pattern.matches(".*"+i+".*", fileName); 
-					if(b){
-						addToZip("", fileToZip + "/" + fileName, zipOut);
+			ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));   
+			File srcFile = new File(fileToZip);
+			
+			if(excludeContainingFolder && srcFile.isDirectory()) {
+				for(String fileName : srcFile.list()) {
+					for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
+						/*Matches any filename that contains the date*/
+						boolean b = Pattern.matches(".*"+i+".*", fileName); 
+						if(b){
+							addToZip("", fileToZip + "/" + fileName, zipOut);
+						}
 					}
 				}
 			}
-		}
-
-		zipOut.flush();
-		zipOut.close();
-		System.out.println("Successfully created " + zipFile);
+			zipOut.flush();
+			zipOut.close();
+			System.out.println("Successfully created " + zipFile);
 	}
 
 	/**
