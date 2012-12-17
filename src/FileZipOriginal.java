@@ -12,12 +12,13 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-/**
+/** 
+ * This command line tool takes two arguments
+ * 1. The Root of the Windchill folder. e.g: "Z:/Windchill" (exactly as shown. NO forward slash (/) after "Windchill")
+ * 2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012) 
+ *  @author asaif
  * 
- * @author asaif
- *This command line class takes two arguments
- *1. The Root of the Windchill folder. e.g: "Z:/Windchill" (exactly as shown. NO forward slash (/) after "Windchill")
- *2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012) 
+
  */
 
 public class FileZipOriginal {
@@ -27,7 +28,10 @@ public class FileZipOriginal {
 	private static Calendar cal = Calendar.getInstance();
 	private static SimpleDateFormat Date_format = new SimpleDateFormat("yyMMdd");
 	private static int currentDate = Integer.parseInt(Date_format.format(cal.getTime())); //current date in Int format
-	private static int date; //date inputed
+	/**
+	 * date inputed 
+	 */
+	private static int date; 
 	private static String windchillFolder;
 
 
@@ -40,7 +44,7 @@ public class FileZipOriginal {
 			date = Integer.parseInt(args[1]);
 			//			new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
 			new FileZipOriginal(windchillFolder+"/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
-			new FileZipOriginal(windchillFolder+"/codebase", "Z:/Windchill/logs/TechPack/CodebaseFiles.zip", true);
+			new FileZipOriginal(windchillFolder+"/codebase", "Z:/Windchill/logs/TechPack/CodebaseFiles.zip", true,"codebaseFiles.txt");
 			new FileZipOriginal(windchillFolder+"/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true);
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
@@ -48,8 +52,9 @@ public class FileZipOriginal {
 			System.out.println("Please specify a date in this format: yymmdd");
 		}
 	}
+
 	/**
-	 * This Constructor is for the server files (MethodServer and ServerManager)
+	 * ZIP the server files (MethodServer and ServerManager)
 	 * @param fileToZip
 	 * @param zipFile
 	 * @param excludeContainingFolder
@@ -82,13 +87,14 @@ public class FileZipOriginal {
 	}
 
 	/**
-	 * This Constructor is for Folders containing Log Files
+	 * ZIP Folders containing property Files
 	 * @param fileToZip
 	 * @param zipFile
 	 * @param excludeContainingFolder
+	 * @param fileList
 	 * @throws IOException
 	 */
-	public FileZipOriginal(String fileToZip, String zipFile, boolean excludeContainingFolder)
+	public FileZipOriginal(String fileToZip, String zipFile, boolean excludeContainingFolder, String fileList)
 			throws IOException {  
 
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));    
@@ -103,7 +109,7 @@ public class FileZipOriginal {
 				FileReader file = null;
 				BufferedReader reader = null;
 				try {
-					file = new FileReader("src/parsable/codebaseFiles.txt"); //This only works for codebase files...need to find the name by fileToZip
+					file = new FileReader("src/parsable/"+fileList); //This only works for codebase files...need to find the name by fileToZip
 					reader = new BufferedReader(file);
 					String line = "";
 					while ((line = reader.readLine()) != null) { //Loop through the files and get the files names
@@ -129,14 +135,37 @@ public class FileZipOriginal {
 			} 
 			/*Done Reading text File*/
 		}
-
 		zipOut.flush();
 		zipOut.close();
 		System.out.println("Successfully created " + zipFile);	
 	}
 
 	/**
-	 * This method that adds File to the Zip
+	 * ZIP the FINAL TechPack
+	 * @param fileToZip
+	 * @param zipFile
+	 * @param excludeContainingFolder
+	 * @throws IOException
+	 */
+
+	public FileZipOriginal(String fileToZip, String zipFile, boolean excludeContainingFolder)
+			throws IOException {        
+		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));    
+
+		File srcFile = new File(fileToZip);
+
+		if(excludeContainingFolder && srcFile.isDirectory()) {
+			for(String fileName : srcFile.list()) {
+						addToZip("", fileToZip + "/" + fileName, zipOut);	
+			}
+		}
+		zipOut.flush();
+		zipOut.close();
+		System.out.println("Successfully created " + zipFile);
+	}
+
+	/**
+	 * This private method that adds File to the Zip
 	 * @param path
 	 * @param srcFile
 	 * @param zipOut
