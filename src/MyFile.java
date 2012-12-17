@@ -9,7 +9,6 @@ public class MyFile {
 
 	public static void main (String[] args) throws IOException {
 
-		String returnValue = "";
 		FileReader file = null;
 		BufferedReader reader = null;
 		try {
@@ -17,8 +16,7 @@ public class MyFile {
 			 reader = new BufferedReader(file);
 			String line = "";
 			while ((line = reader.readLine()) != null) {
-				returnValue = line;
-				System.out.println(returnValue);
+				System.out.println(line);
 			}
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException("File not found");

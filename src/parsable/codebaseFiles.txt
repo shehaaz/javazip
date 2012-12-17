@@ -12,7 +12,6 @@ PDFFormat.properties
 baseline.dependantKeys.properties
 baseline.lcs.properties
 lcs.advCopy.properties
-dependantKeys.properties
 LineBoard.properties
 ExcelRFQ.properties
 ExcelFormat.properties

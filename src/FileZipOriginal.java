@@ -23,7 +23,7 @@ import java.util.zip.ZipOutputStream;
 
 public class FileZipOriginal {
 
-	private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
+	private static final int DEFAULT_BUFFER_SIZE = 1024 * 8;
 
 	private static Calendar cal = Calendar.getInstance();
 	private static SimpleDateFormat Date_format = new SimpleDateFormat("yyMMdd");
@@ -42,10 +42,13 @@ public class FileZipOriginal {
 		{	
 			windchillFolder = args[0];
 			date = Integer.parseInt(args[1]);
-			//			new FileZipOriginal("C:/Users/Lenovo/Dropbox/javazip/src/INPUTLog", "C:/Users/Lenovo/Dropbox/javazip/src/OUTPUTLog.zip", true);
-			new FileZipOriginal(windchillFolder+"/logs", "Z:/Windchill/logs/TechPack/ServerLogs.zip", true, true);
-			new FileZipOriginal(windchillFolder+"/codebase", "Z:/Windchill/logs/TechPack/CodebaseFiles.zip", true,"codebaseFiles.txt");
-			new FileZipOriginal(windchillFolder+"/logs/TechPack", "D:/Users/asaif/Desktop/TechPack.zip", true);
+			
+			new FileZipOriginal(windchillFolder+"/logs", windchillFolder+"/logs/TechPack/ServerLogs.zip", true, true);
+			new FileZipOriginal(windchillFolder+"/codebase", windchillFolder+"/logs/TechPack/CodebaseFiles.zip", true,"codebaseFiles.txt");
+			new FileZipOriginal(windchillFolder+"/codebase/com/lcs/wc/client", windchillFolder+"/logs/TechPack/ClientFiles.zip", true,"clientFiles.txt");
+			new FileZipOriginal(windchillFolder+"/codebase/com/lcs/wc/client/web", windchillFolder+"/logs/TechPack/ClientWebFiles.zip", true,"clientWebFiles.txt");
+			new FileZipOriginal(windchillFolder+"/codebase/rfa/jsp/main", windchillFolder+"/logs/TechPack/FlexPDM_Version.zip", true,"FlexPDM_Version.txt");
+			new FileZipOriginal(windchillFolder+"/logs/TechPack", windchillFolder+"/logs/TechPack.zip", true);
 		}
 		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
 		{
@@ -103,7 +106,7 @@ public class FileZipOriginal {
 
 		if(excludeContainingFolder && srcFile.isDirectory()) {
 			for(String fileName : srcFile.list()) {	
-				System.out.println("Loop to get file: "+ fileName);
+//				System.out.println("Loop to get file: "+ fileName);
 
 				/*Reading text File*/
 				FileReader file = null;
@@ -115,6 +118,8 @@ public class FileZipOriginal {
 					while ((line = reader.readLine()) != null) { //Loop through the files and get the files names
 						boolean b = Pattern.matches(line, fileName);
 						if(b){
+							System.out.println("File from textfile: "+ line);
+							System.out.println("File from source: "+ fileName);
 							addToZip("", fileToZip + "/" + fileName, zipOut); //Adding individual files to the addToZip
 						}
 					}
