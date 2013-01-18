@@ -12,13 +12,13 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+
 /** 
  * This command line tool takes two arguments
  * 1. The Root of the Windchill folder. e.g: "Z:/Windchill" (exactly as shown. NO forward slash (/) after "Windchill")
  * 2. a date, in this format yymmdd. e.g: 121130 (November 30th, 2012). This would fetch everything from the November 30th, 2012 until today
  *  @author asaif
  * 
-
  */
 
 public class FileZipOriginal {
@@ -50,7 +50,7 @@ public class FileZipOriginal {
 			new FileZipOriginal(windchillFolder+"/codebase/rfa/jsp/main", windchillFolder+"/logs/TechPack/FlexPDM_Version.zip", true,"FlexPDM_Version.txt");
 			new FileZipOriginal(windchillFolder+"/logs/TechPack", windchillFolder+"/logs/TechPack.zip", true);
 		}
-		catch (ArrayIndexOutOfBoundsException e) //When no arguments are given ArrayIndexOutofBoundsException is thrown.
+		catch (ArrayIndexOutOfBoundsException e) 
 		{
 			System.out.println("Please specify The Root of the Windchill folder e.g: \"Z:/Windchill\" and a date in this format: yymmdd");
 		}
@@ -73,9 +73,12 @@ public class FileZipOriginal {
 			if(excludeContainingFolder && srcFile.isDirectory()) {
 				for(String fileName : srcFile.list()) {
 					for(int i = date; i<=currentDate; i++){		//date entered is always smaller than the current date
+						
 						/*Matches any filename that contains the date*/
-						boolean b = Pattern.matches(".*"+i+".*", fileName); 
-						if(b){
+						boolean isMethodServerFile = Pattern.matches("MethodServer-"+i+".*", fileName); 
+						boolean isServerMangerFile = Pattern.matches("ServerManager-"+i+".*", fileName); 
+						
+						if(isMethodServerFile|| isServerMangerFile){
 							addToZip("", fileToZip + "/" + fileName, zipOut);
 						}
 					}
