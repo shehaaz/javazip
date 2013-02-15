@@ -10,6 +10,7 @@ TODO:
 	codebaseProperties.2=......
 	etc
 3- Move project into wc/Tools folder
+4- authentication: wt.auth.Authentication
 
 	
 	
